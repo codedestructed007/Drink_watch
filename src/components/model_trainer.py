@@ -12,6 +12,7 @@ from sklearn.linear_model import  LogisticRegression
 from sklearn.ensemble import  AdaBoostClassifier , RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from xgboost import XGBClassifier
+from sklearn.model_selection import  GridSearchCV
 
 
 
@@ -95,12 +96,28 @@ class ModelTrainer:
                 logger.info('All models are successfully implemented')
 
                 # Best model score value
-                best_model_score = max(sorted(model_report.values()))
-                index_of_best_score = list(model_report.values()).index(best_model_score)
 
-                best_model_name = list(model_report.keys())[index_of_best_score]
+                # Here best_score is accuracy_score not R2_score
+
+                best_score = max(sorted(model_report.values()))
+                index_of_mse = list(model_report.values()).index(best_score)
+
+                best_model_name = list(model_report.keys())[index_of_mse]
 
                 model = classifiers[best_model_name]
+                logger.info('Best model is generated')
+
+                ## Now we have the best model ,Now apply Hypertuning on best parameter
+                params = parameters[best_model_name]
+                clf = GridSearchCV(model , params, scoring='accuracy',cv= 5)
+                clf.fit(X_train,y_train)
+                best_parameters = clf.best_params_
+
+                model_best_parameters = {
+                    'model_name' : model,
+                    'best_parameter' : best_parameters
+                }
+
                 logger.info('Best model has been saved')
             except Exception as e:
                 raise CustomException(e,sys)
@@ -108,12 +125,14 @@ class ModelTrainer:
             # Saving best model
             save_object(
                 file_path=self.model_trainer_config.model_file_obj_path,
-                obj=model
+                obj=model_best_parameters
             )
 
 
-            return best_model_score , best_model_name
+            return best_score , best_model_name
 
 
         except Exception as e:
             raise CustomException(e,sys)
+
+

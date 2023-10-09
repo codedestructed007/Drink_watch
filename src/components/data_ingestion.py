@@ -19,7 +19,7 @@ class DataIngestion:
     def __init__(self):
         self.ingestion_config = DataIngestionConfig()
 
-    def basic_filteration_in_raw_data(self,testing = False,rows =0.001):
+    def basic_filteration_in_raw_data(self,testing = False,rows =0.01):
         try:
             if testing == True:
                 df = pd.read_csv('notebook/data/smoking.csv')
@@ -45,7 +45,7 @@ class DataIngestion:
         logger.info('Entered the data Ingestion method of component')
         try:
             # A filter raw dataset
-            df  = self.basic_filteration_in_raw_data(testing=True,)
+            df  = self.basic_filteration_in_raw_data(testing=True)
             logger.info('Read the dataset')
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path), exist_ok=True)
