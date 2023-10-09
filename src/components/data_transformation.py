@@ -84,9 +84,7 @@ class DataTransformation:
                 obj = encoder
             )
 
-
             return df
-
 
         except Exception as e:
             raise CustomException(e,sys)

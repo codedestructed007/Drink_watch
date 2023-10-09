@@ -13,8 +13,9 @@ class PredictPineline:
     def predict(self, features):
         try:
             model_path = 'artifacts/model.pkl'
-            model = load_object(file_path=model_path)
-            prediction = model.predict(features)
+            model , best_parameters = load_object(file_path=model_path)
+            hyper_tuned_model = model.set_params(**best_parameters)
+            prediction = hyper_tuned_model.predict(features)
             return prediction
         except Exception as e:
             raise RecursionError(e,sys)
