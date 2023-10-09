@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Detector</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            background-image: url('wineglass.png');
+            background-repeat: repeat;
+            opacity: 0.6;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        /* Form styles */
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-container .form-group {
+            display: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .form-container .form-group.active {
+            display: block;
+        }
+
+        .form-container .form-group label {
+            font-size: 18px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-container .form-group input[type="text"],
+        .form-container .form-group input[type="number"],
+        .form-container .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container .form-group button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container .form-group button:hover {
+            background-color: #555;
+        }
+
+        /* Footer styles */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 24px;
+        }
+
+        /* Social media icons */
+        footer i {
+            font-size: 30px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to the Drink Detector</h1>
+    <p>Discover Your Inner Drink Hero or Zero!</p>
+</header>
+
+<!-- Your content goes here (input fields, form, etc.) -->
+<!-- Form container -->
+<div class="form-container">
+    <form id="drink-form">
+        <div class="form-group active">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+            <label for="weight">Weight:</label>
+            <input type="number" id="weight" name="weight" required>
+        </div>
+        <div class="form-group">
+            <label for="sight_left">Left Eye Sight:</label>
+            <input type="number" id="sight_left" name="sight_left" required>
+        </div>
+        <!-- Add more form fields for the remaining features -->
+
+        <button type="button" id="next-button">Next</button>
+    </form>
+</div>
+
+
+<footer>
+    <a href="https://github.com/codedestructed007" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/satyamsharma61541425b/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://medium.com/@codexistslonglastingnotfog/django-rest-framework-a-step-by-step-guide-with-code-examples-efe9665b59d8" target="_blank"><i class="fab fa-medium"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+</footer>
+
+<script>
+    // JavaScript to show one form group at a time
+    const formGroups = document.querySelectorAll('.form-group');
+    const nextButton = document.getElementById('next-button');
+    let currentGroupIndex = 0;
+
+    nextButton.addEventListener('click', () => {
+        if (currentGroupIndex < formGroups.length - 1) {
+            formGroups[currentGroupIndex].classList.remove('active');
+            currentGroupIndex++;
+            formGroups[currentGroupIndex].classList.add('active');
+        } else {
+            // Handle form submission here
+            document.getElementById('drink-form').submit();
+        }
+    });
+</script>
+</body>
+</html>
