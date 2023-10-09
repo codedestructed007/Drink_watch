@@ -93,6 +93,8 @@ class ModelTrainer:
             try:
                 model_report: dict = model_evaluation(X_train = X_train,X_test = X_test,y_train = y_train,y_test=y_test,models = classifiers, parameters = parameters)
                 logger.info('All models are successfully implemented')
+
+                # Best model score value
                 best_model_score = max(sorted(model_report.values()))
                 index_of_best_score = list(model_report.values()).index(best_model_score)
 
@@ -103,6 +105,7 @@ class ModelTrainer:
             except Exception as e:
                 raise CustomException(e,sys)
 
+            # Saving best model
             save_object(
                 file_path=self.model_trainer_config.model_file_obj_path,
                 obj=model

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Detector - Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='your-css-file.css') }}">
+</head>
+<body>
+<header>
+    <h1>Drink Detector - Results</h1>
+</header>
+
+<!-- Result content -->
+<div class="result-container">
+    <h2>Analysis Results</h2>
+    <p>Here are the results of your analysis:</p>
+
+    <p> {{ result }}</p>
+    <!-- You can display the results dynamically here using Flask templates -->
+    <a href="/">Go Back to Home</a>
+</div>
+
+<footer>
+    <a href="https://github.com/codedestructed007" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/satyamsharma61541425b/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://medium.com/@codexistslonglastingnotfog/django-rest-framework-a-step-by-step-guide-with-code-examples-efe9665b59d8" target="_blank"><i class="fab fa-medium"></i></a>
+</footer>
+</body>
+</html>
