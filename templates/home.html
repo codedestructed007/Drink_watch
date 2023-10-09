@@ -12,8 +12,9 @@
             padding: 0;
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
-            background-image: url('pratik-gupta-z7ES_ScFPhg-unsplash.jpg');
-            background-repeat: repeat;
+            background-image: url('static/pratik-gupta-z7ES_ScFPhg-unsplash.jpg');
+            background-repeat: no-repeat;
+            background-size : cover;
             opacity: 0.6;
         }
 
@@ -103,6 +104,41 @@
             font-size: 30px;
             vertical-align: middle;
         }
+        /* Right corner buttons container */
+        .buttons-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* Right corner button styles */
+        .buttons-container .button-box {
+            display: block;
+            margin-bottom: 10px;
+            border: 1px solid #000;
+            background-color: transparent;
+            text-align: center;
+        }
+
+        .buttons-container .button-box button {
+            background-color: transparent;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .buttons-container .button-box button:hover {
+            background-color: #555;
+        }
+
+
+
+
     </style>
 </head>
 <body>
@@ -110,6 +146,7 @@
     <h1>Welcome to the Drink Detector</h1>
     <p>Discover Your Inner Drink Hero or Zero!</p>
 </header>
+
 
 <!-- Form container -->
 <div class="form-container">
@@ -174,5 +211,20 @@
     <a href="https://www.linkedin.com/in/satyamsharma61541425b/" target="_blank"><i class="fab fa-linkedin"></i></a>
     <a href="https://medium.com/@codexistslonglastingnotfog/django-rest-framework-a-step-by-step-guide-with-code-examples-efe9665b59d8" target="_blank"><i class="fab fa-medium"></i></a>
 </footer>
+<div class="buttons-container">
+    <div class="button-box">
+        <button>Documentation</button>
+    </div>
+    <div class="button-box">
+        <button>Exploratory Data Analysis</button>
+    </div>
+    <div class="button-box">
+        <button>Article </button>
+    </div>
+</div>
+
+
+
+
 </body>
 </html>
