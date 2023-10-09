@@ -16,7 +16,7 @@ from src.logger import logger
 
 @dataclass
 class DataTransformationCofig:
-    labelEncoder_obj_file_path =os.path.join('artifacts','label_encoder.pk')
+    labelEncoder_obj_file_path =os.path.join('artifacts','label_encoder.pkl')
     transformed_train_df_file_path = os.path.join('artifacts/Transformed_datasets','train_df.csv')
     transformed_test_df_file_path = os.path.join('artifacts/Transformed_datasets','test_df.csv')
 class DataTransformation:

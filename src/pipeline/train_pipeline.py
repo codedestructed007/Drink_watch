@@ -1,3 +1,4 @@
+import sys
 from src.components.data_transformation import DataTransformation
 from src.components.model_trainer import ModelTrainer
 from src.components.data_ingestion import  DataIngestion
@@ -26,7 +27,7 @@ class TrainPipeline:
             _,_, trainer.initiate_model_training('artifacts/Transformed_datasets/train_df.csv','artifacts/Transformed_datasets/test_df.csv')
 
 
-        except Exception as e
+        except Exception as e:
             raise CustomException(e,sys)
 
 #%%
