@@ -1,11 +1,9 @@
 import os
 import sys
 import pandas as pd
-import  numpy as np
 import warnings
 warnings.filterwarnings('ignore')
 
-from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import  LogisticRegression
@@ -20,7 +18,7 @@ from dataclasses import dataclass
 from src.logger import logger
 from src.exception import CustomException
 
-from src.components.data_transformation import DataTransformation
+
 from src.utils import  save_object
 
 @dataclass

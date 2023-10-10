@@ -30,9 +30,8 @@ def Predict():
         serum_creatinine = request.form.get('serum_creatinine')
         SGOT_AST = request.form.get('SGOT_AST')
         SGOT_ALT = request.form.get('SGOT_ALT')
-        gamma_GTP = request.form.get('gamma_GTP')
         SMK_stat_type_cd = request.form.get('SMK_stat_type_cd')
-        data = CustomData(sex,age,weight,sight_left,sight_right,hear_left,DBP,BLDS,HDL_chole,LDL_chole,triglyceride, urine_protein, serum_creatinine, SGOT_AST, SGOT_ALT, gamma_GTP, SMK_stat_type_cd)
+        data = CustomData(sex,age,weight,sight_left,sight_right,hear_left,DBP,BLDS,HDL_chole,LDL_chole,triglyceride, urine_protein, serum_creatinine, SGOT_AST, SGOT_ALT, SMK_stat_type_cd)
         User_input = data.get_data_as_dataFrame()
         # Initiating PredictPipeline
         predict_pipeline =PredictPineline()

@@ -45,7 +45,7 @@ class DataIngestion:
         logger.info('Entered the data Ingestion method of component')
         try:
             # A filter raw dataset
-            df  = self.basic_filteration_in_raw_data(testing=True,)
+            df  = self.basic_filteration_in_raw_data(testing=True)
             logger.info('Read the dataset')
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path), exist_ok=True)

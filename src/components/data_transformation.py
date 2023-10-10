@@ -27,7 +27,7 @@ class DataTransformation:
         try:
             df.drop(['height'],axis=1,inplace = True)
 
-            df.drop(['hear_right','waistline','tot_chole','hemoglobin'],axis=1,inplace=True)
+            df.drop(['hear_right','waistline','tot_chole','hemoglobin','gamma_GTP'],axis=1,inplace=True)
 
             df.drop(['SBP'],axis=1,inplace=True)
             print(type(df))
@@ -64,7 +64,6 @@ class DataTransformation:
 
             df.drop(df['serum_creatinine'].loc[df['serum_creatinine'] >=8].index, inplace = True)
 
-            df.drop(df['gamma_GTP'].loc[df['gamma_GTP'] > 600].index ,inplace = True)
 
             logger.info('Outliers have been removed completely')
             return df
