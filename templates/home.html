@@ -152,7 +152,7 @@
 <div class="form-container">
     <form id="drink-form" method="POST" action="/predict">
         <label for="sex">Sex:</label>
-        <input type="number" id="sex" name="sex" required>
+        <input type="text" id="sex" name="sex" required>
 
         <label for="age">Age:</label>
         <input type="number" id="age" name="age" required>
@@ -175,13 +175,13 @@
         <label for="BLDS">Blood Sugar (BLDS):</label>
         <input type="number" id="BLDS" name="BLDS" required>
 
-        <label for="HDL_chole">HDL Cholesterol:</label>
+        <label for="HDL_chole">HDL Cholesterol(Good Cholesterol)</label>
         <input type="number" id="HDL_chole" name="HDL_chole" required>
 
-        <label for="LDL_chole">LDL Cholesterol:</label>
+        <label for="LDL_chole">LDL Cholesterol(Bad Cholesterol)</label>
         <input type="number" id="LDL_chole" name="LDL_chole" required>
 
-        <label for="triglyceride">Triglycerides:</label>
+        <label for="triglyceride">Triglycerides(a body fat):</label>
         <input type="number" id="triglyceride" name="triglyceride" required>
 
         <label for="urine_protein">Urine Protein:</label>
@@ -190,13 +190,13 @@
         <label for="serum_creatinine">Serum Creatinine:</label>
         <input type="number" id="serum_creatinine" name="serum_creatinine" required>
 
-        <label for="SGOT_AST">SGOT/AST:</label>
+        <label for="SGOT_AST">SGOT/AST(Serum glutamic-oxaloacetic transaminase(Aspartate transaminase):</label>
         <input type="number" id="SGOT_AST" name="SGOT_AST" required>
 
-        <label for="SGOT_ALT">SGOT/ALT:</label>
+        <label for="SGOT_ALT">SGOT/ALT(Serum Glutamic-oxaloacetic transaminase(Alanine Transaminase):</label>
         <input type="number" id="SGOT_ALT" name="SGOT_ALT" required>
 
-        <label for="gamma_GTP">Gamma GTP:</label>
+        <label for="gamma_GTP">Gamma GTP(y_glutamyl transpepetidase):</label>
         <input type="number" id="gamma_GTP" name="gamma_GTP" required>
 
         <label for="SMK_stat_type_cd">SMK Stat Type Code:</label>
@@ -205,6 +205,7 @@
         <button type="submit">Predict</button>
     </form>
 </div>
+
 
 <footer>
     <a href="https://github.com/codedestructed007" target="_blank"><i class="fab fa-github"></i></a>

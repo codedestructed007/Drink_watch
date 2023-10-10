@@ -13,8 +13,9 @@ class PredictPineline:
     def predict(self, features):
         try:
             model_path = 'artifacts/model.pkl'
-            model , best_parameters = load_object(file_path=model_path)
-            hyper_tuned_model = model.set_params(**best_parameters)
+            model_and_parameters= load_object(file_path=model_path)
+            model , best_params= model_and_parameters['model_name'] , model_and_parameters['best_parameter']
+            hyper_tuned_model = model.set_params(**best_params)
             prediction = hyper_tuned_model.predict(features)
             return prediction
         except Exception as e:
@@ -37,24 +38,23 @@ class CustomData:
                  serum_creatinine : float,
                  SGOT_AST : float,
                  SGOT_ALT : float,
-                 gamma_GTP : float,
+                 # gamma_GTP : float,
                  SMK_stat_type_cd : float):
-        self.sex =sex,
-        self.age = age,
-        self.weight = weight,
-        self.sight_left = sight_left,
-        self.sight_right = sight_right,
-        self.hear_left = hear_left,
-        self.DBP = DBP,
-        self.BLDS = BLDS,
-        self.HDL_chole = HDL_chole,
-        self.LDL_chole = LDL_chole,
-        self.triglyceride = triglyceride,
-        self.urine_protein = urine_protein,
-        self.serum_creatinine = serum_creatinine,
-        self.SGOT_AST = SGOT_AST,
-        self.SGOT_ALT = SGOT_ALT,
-        self.gamma_GTP = gamma_GTP,
+        self.sex =sex
+        self.age = age
+        self.weight = weight
+        self.sight_left = sight_left
+        self.sight_right = sight_right
+        self.hear_left = hear_left
+        self.DBP = DBP
+        self.BLDS = BLDS
+        self.HDL_chole = HDL_chole
+        self.LDL_chole = LDL_chole
+        self.triglyceride = triglyceride
+        self.urine_protein = urine_protein
+        self.serum_creatinine = serum_creatinine
+        self.SGOT_AST = SGOT_AST
+        self.SGOT_ALT = SGOT_ALT
         self.SMK_stat_type_cd = SMK_stat_type_cd
     def get_data_as_dataFrame(self):
         try:
@@ -74,7 +74,7 @@ class CustomData:
                 'serum_creatinine' : [self.serum_creatinine],
                 'SGOT_AST' : [self.SGOT_AST],
                 'SGOT_ALT' : [self.SGOT_ALT],
-                'gamma_GPT' : [self.gamma_GTP],
+
                 'SMK_stat_type_cd' : [self.SMK_stat_type_cd]
             }
             logger.info('DataFrame for input has been prepared')
