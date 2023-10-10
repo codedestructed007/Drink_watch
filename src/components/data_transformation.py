@@ -37,10 +37,9 @@ class DataTransformation:
 
     def remove_outliers(self, df):
         try:
-            # Remove rows where 'weight' >= 120
+
             df.drop(df[df['weight'] >= 120].index,inplace = True)
 
-            # Remove rows where 'sight_right' >= 2
             logger.info('Removing Outliers process start--')
 
             df.drop(df['sight_left'].loc[df['sight_left'] >=2].index ,inplace =True)
@@ -73,6 +72,10 @@ class DataTransformation:
             raise CustomException(e,sys)
 
     def label_encoding(self, df, column_1st = 'sex',column_2nd = 'DRK_YN'):
+        """
+
+        :rtype: dataframe
+        """
         try:
             encoder = LabelEncoder()
             df[column_1st] = encoder.fit_transform(df[column_1st])

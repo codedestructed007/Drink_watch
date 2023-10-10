@@ -3,22 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drink Detector - Results</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='your-css-file.css') }}">
+    <title>Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global styles (similar to home page) */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            background-image: url('static/pratik-gupta-z7ES_ScFPhg-unsplash.jpg');
+            background-repeat: no-repeat;
+            background-size : cover;
+            opacity: 0.6;
+        }
+
+        /* Header styles (similar to home page) */
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        /* Result container styles */
+        .result-container {
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            color: white; /* Set the text color for results */
+        }
+
+        .result-container h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .result-container p {
+            font-size: 18px;
+        }
+
+        /* Footer styles (similar to home page) */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 24px;
+        }
+
+        /* Social media icons (similar to home page) */
+        footer i {
+            font-size: 30px;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 <body>
 <header>
-    <h1>Drink Detector - Results</h1>
+    <h1>Result is ready now</h1>
 </header>
 
-<!-- Result content -->
+<!-- Result container -->
 <div class="result-container">
-    <h2>Analysis Results</h2>
-    <p>Here are the results of your analysis:</p>
+    {% if prediction == 1 %}
 
-    <p> {{ prediction }}</p>
-    <!-- You can display the results dynamically here using Flask templates -->
-    <a href="/">Go Back to Home</a>
+    <img src="static/sign-304092_1280.jpg" alt="Alcohol Detected Image">
+    <p>Significant alcohol content detected</p>
+    {% else %}
+    <img src="static/download-1002802_640-removebg-preview.png" alt="No Alcohol Detected Image">
+    <p>No significant alcohol content detected</p>
+    {% endif %}
 </div>
 
 <footer>
@@ -26,5 +104,6 @@
     <a href="https://www.linkedin.com/in/satyamsharma61541425b/" target="_blank"><i class="fab fa-linkedin"></i></a>
     <a href="https://medium.com/@codexistslonglastingnotfog/django-rest-framework-a-step-by-step-guide-with-code-examples-efe9665b59d8" target="_blank"><i class="fab fa-medium"></i></a>
 </footer>
+
 </body>
 </html>

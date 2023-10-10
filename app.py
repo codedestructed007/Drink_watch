@@ -60,10 +60,12 @@ def Predict():
             predict_pipeline =PredictPineline()
 
             prediction = predict_pipeline.predict(User_input)
-            result = {
-                'prediction' : prediction
-            }
-            return  render_template('result.html',result=result)
+
+            # Getting in integer
+            prediction = prediction[0]
+            print('sdfsdfsdfstwe')
+            print(prediction)
+            return  render_template('result.html',prediction=prediction)
         # With other methods
         else:
             return render_template('home.html',)

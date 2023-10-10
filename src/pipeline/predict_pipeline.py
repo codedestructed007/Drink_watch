@@ -38,7 +38,6 @@ class CustomData:
                  serum_creatinine : float,
                  SGOT_AST : float,
                  SGOT_ALT : float,
-                 # gamma_GTP : float,
                  SMK_stat_type_cd : float):
         self.sex =sex
         self.age = age
