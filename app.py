@@ -72,6 +72,13 @@ def Predict():
     except Exception as e:
         raise CustomException(e,sys)
 
+app.route('/eda')
+def Eda():
+    return render_template('eda.html')
+
+app.route('/documentation')
+def docs():
+    return render_template('documentation.html')
 
 
 
