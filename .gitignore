@@ -161,6 +161,5 @@ cython_debug/
 #.idea/
 experiments.py
 experiments.ipynb
-artifacts/
 /notebook/data/
 temp.txt
