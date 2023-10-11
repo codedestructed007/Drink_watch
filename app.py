@@ -72,11 +72,12 @@ def Predict():
     except Exception as e:
         raise CustomException(e,sys)
 
-app.route('/eda')
-def Eda():
+@app.route('/eda',  methods=['GET'])
+def eda():
+    print('sdfsdfsdfsdfsdf')
     return render_template('eda.html')
 
-app.route('/documentation')
+@app.route('/documentation')
 def docs():
     return render_template('documentation.html')
 

@@ -39,9 +39,6 @@ def model_evaluation(X_train,X_test,y_train,y_test,models:dict,parameters , load
             report = {}
             for obj, algos in (models.items()):
                 algos.fit(X_train,y_train)
-                print('-----------------------')
-                print(list(X_train.columns))
-                print(list(X_test.columns))
                 y_test_pred = algos.predict(X_test)
                 y_train_pred = algos.predict(X_train)
                 train_score = accuracy_score(y_train,y_train_pred)
