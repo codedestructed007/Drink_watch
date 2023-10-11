@@ -15,7 +15,7 @@ class TrainPipeline:
             transformation_object = DataTransformation()
             transformation_object.data_transformation('artifacts/train.csv','artifacts/train.csv')
             trainer = ModelTrainer()
-            _,_, trainer.initiate_model_training('artifacts/Transformed_datasets/train_df.csv','artifacts/Transformed_datasets/test_df.csv')
+            _,_,=trainer.initiate_model_training('artifacts/Transformed_datasets/train_df.csv','artifacts/Transformed_datasets/test_df.csv')
 
 
         except Exception as e:
