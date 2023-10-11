@@ -7,7 +7,9 @@ from src.pipeline.predict_pipeline import CustomData, PredictPineline
 from src.exception import  CustomException
 from src.utils import load_object
 from src.logger import logger
-app = Flask(__name__)
+application = Flask(__name__)
+
+app = application
 
 # Homepage
 @app.route('/')
@@ -18,7 +20,7 @@ def homepage():
 @app.route('/predict', methods=['POST'])
 def Predict():
     try:
-    # If method is 'POST'
+        # If method is 'POST'
         if request.method == 'POST':
 
             # Access the submitted form data using the 'name' attributes
@@ -84,4 +86,4 @@ def train_model():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug = True,port = 5050)
+    app.run(host='0.0.0.0',port = 5050)
