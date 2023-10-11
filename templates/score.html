@@ -1,0 +1,79 @@
+<style>
+    table#csv-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    th {
+        background-color: brown;
+        color: white;
+    }
+
+    th, td {
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {
+        background-color: #ddd;
+    }
+</style>
+
+<div id="loading-overlay" class="overlay">
+    <div class="loading-text">
+        <table id="csv-table">
+            <thead>
+            <tr>
+                <th>Algorithm</th>
+                <th>Test Accuracy</th>
+                <th>MSE</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>SVC()</td>
+                <td>0.6880733944954128</td>
+                <td>0.3119266055045872</td>
+            </tr>
+            <tr>
+                <td>DecisionTreeClassifier()</td>
+                <td>1.0</td>
+                <td>0.0</td>
+            </tr>
+            <tr>
+                <td>AdaBoostClassifier()</td>
+                <td>0.7216251638269987</td>
+                <td>0.2783748361730013</td>
+            </tr>
+            <tr>
+                <td>RandomForestClassifier()</td>
+                <td>1.0</td>
+                <td>0.0</td>
+            </tr>
+            <tr>
+                <td>KNeighborsClassifier()</td>
+                <td>0.7382699868938402</td>
+                <td>0.2617300131061599</td>
+            </tr>
+            <tr>
+                <td>LogisticRegression(max_iter=1000)</td>
+                <td>0.7218872870249017</td>
+                <td>0.2781127129750983</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<a href="/">
+    <button>Home</button>
+</a>

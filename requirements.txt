@@ -7,3 +7,4 @@ xgboost
 statsmodels
 dill
 Flask
+Flask-Logging

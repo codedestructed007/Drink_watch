@@ -1,5 +1,6 @@
-from flask import Flask , render_template , request
-
+import os
+from flask import Flask , render_template , request , redirect ,url_for
+import csv
 import sys
 from datetime import  datetime
 from src.pipeline.predict_pipeline import CustomData, PredictPineline
@@ -55,7 +56,7 @@ def Predict():
 
             data = CustomData(sex,age,weight,sight_left,sight_right,hear_left,DBP,BLDS,HDL_chole,LDL_chole,triglyceride, urine_protein, serum_creatinine, SGOT_AST, SGOT_ALT, SMK_stat_type_cd)
             User_input = data.get_data_as_dataFrame()
-
+            logger.info('Dataframe has been created successfully')
             # Initiating PredictPipeline
             predict_pipeline =PredictPineline()
 
@@ -63,7 +64,6 @@ def Predict():
 
             # Getting in integer
             prediction = prediction[0]
-            print('sdfsdfsdfstwe')
             print(prediction)
             return  render_template('result.html',prediction=prediction)
         # With other methods
@@ -72,15 +72,15 @@ def Predict():
     except Exception as e:
         raise CustomException(e,sys)
 
-@app.route('/eda',  methods=['GET'])
-def eda():
-    print('sdfsdfsdfsdfsdf')
-    return render_template('eda.html')
-
-@app.route('/documentation')
-def docs():
-    return render_template('documentation.html')
-
+@app.route('/train')
+def train_model():
+    os.system('python model_training.py')
+    csv_data = []
+    with open('artifacts/Result.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            csv_data.append(row)
+    return render_template('score.html', csv_data = csv_data)
 
 
 if __name__ == '__main__':

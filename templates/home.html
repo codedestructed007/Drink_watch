@@ -134,9 +134,25 @@
 
         .buttons-container .button-box button:hover {
             background-color: #555;
+        }/* Add CSS for the loading overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 9999;
         }
 
-
+        /* Add CSS for the loading text */
+        .loading-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
 
 
     </style>
@@ -145,66 +161,105 @@
 <header>
     <h1>Welcome to the Drink Detector</h1>
     <p>Discover Your Inner Drink Hero or Zero!</p>
+    <div class="button-box" style="position: absolute; top: 20px; left: 20px;">
+        <button id="train-button" onclick="window.location.href='/train'">Train</button>
+    </div>
 </header>
+
+
+
+<script>
+    document.getElementById('train-button').addEventListener('click', function () {
+        var overlay = document.getElementById('loading-overlay');
+        overlay.style.display = 'block';
+
+        // Send a request to the /train route to trigger the training process
+        fetch('/train')
+            .then(function(response) {
+                return response.text();
+            })
+            .then(function(data) {
+                // Hide the overlay when training is done
+                overlay.style.display = 'none';
+
+                // Redirect to the homepage or display a message as needed
+                // For example, you can use window.location.href to redirect
+                // window.location.href = '/';
+            })
+            .catch(function(error) {
+                console.error('Error:', error);
+            });
+    });
+</script>
+
+<div id="loading-overlay" class="overlay">
+    <div class="loading-text">Training in progress... This may take a moment.<br><br>
+        Meanwhile try to solve this puzzle [Amazon]<br><br>
+        A bad king has 1000 bottles of wine. A neighboring king plots to kill the bad king, and sends a servant to poison the wine. the servant is able to poison only one of them before he is caught. The guards don't know which bottle was poisoned, but they do know that the poison is so potent that even if it was diluted 1,000,000 times, it would still be fatal. Furthermore, the effects of the poison take one month to surface. The king decides he will get some of his prisoners in his vast dungeons to drink the wine. At a minimum how many servants does he need to kill to find out the poisioned bottle of wine and will still be able to drink the rest of the wine in 5 weeks time?
+    </div>
+</div>
+
 
 
 <!-- Form container -->
 <div class="form-container">
     <form id="drink-form" method="POST" action="/predict">
         <label for="sex">Sex:</label>
-        <input type="text" id="sex" name="sex" required>
+        <input type="text" id="sex" name="sex" required placeholder="e.g., Male or Female">
 
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required>
+        <label for="age">Age (18-99):</label>
+        <input type="number" id="age" name="age" required placeholder="Enter age (18-99)">
 
-        <label for="weight">Weight:</label>
-        <input type="number" id="weight" name="weight" required>
+        <label for="weight">Weight (25-140 kg):</label>
+        <input type="number" id="weight" name="weight" required placeholder="Enter weight in kg (25-140)">
 
-        <label for="sight_left">Left Eye Sight:</label>
-        <input type="number" id="sight_left" name="sight_left" required>
+        <label for="sight_left">Left Eye Sight (0-20):</label>
+        <input type="number" id="sight_left" name="sight_left" required placeholder="Enter left eye sight (0-20)">
 
-        <label for="sight_right">Right Eye Sight:</label>
-        <input type="number" id="sight_right" name="sight_right" required>
+        <label for="sight_right">Right Eye Sight (0-20):</label>
+        <input type="number" id="sight_right" name="sight_right" required placeholder="Enter right eye sight (0-20)">
 
-        <label for="hear_left">Left Ear Hearing:</label>
-        <input type="number" id="hear_left" name="hear_left" required>
+        <label for="hear_left">Left Ear Hearing (0-100 dB):</label>
+        <input type="number" id="hear_left" name="hear_left" required placeholder="Enter left ear hearing (0-100 dB)">
 
-        <label for="DBP">Diastolic Blood Pressure (DBP):</label>
-        <input type="number" id="DBP" name="DBP" required>
+        <label for="DBP">Diastolic Blood Pressure (40-120 mm Hg):</label>
+        <input type="number" id="DBP" name="DBP" required placeholder="Enter DBP (40-120 mm Hg)">
 
-        <label for="BLDS">Blood Sugar (BLDS):</label>
-        <input type="number" id="BLDS" name="BLDS" required>
+        <label for="BLDS">Blood Sugar (70-300 mg/dL):</label>
+        <input type="number" id="BLDS" name="BLDS" required placeholder="Enter blood sugar (70-300 mg/dL)">
 
-        <label for="HDL_chole">HDL Cholesterol(Good Cholesterol)</label>
-        <input type="number" id="HDL_chole" name="HDL_chole" required>
+        <label for="HDL_chole">HDL Cholesterol (10-100 mg/dL):</label>
+        <input type="number" id="HDL_chole" name="HDL_chole" required placeholder="Enter HDL cholesterol (10-100 mg/dL)">
 
-        <label for="LDL_chole">LDL Cholesterol(Bad Cholesterol)</label>
-        <input type="number" id="LDL_chole" name="LDL_chole" required>
+        <label for="LDL_chole">LDL Cholesterol (30-200 mg/dL):</label>
+        <input type="number" id="LDL_chole" name="LDL_chole" required placeholder="Enter LDL cholesterol (30-200 mg/dL)">
 
-        <label for="triglyceride">Triglycerides(a body fat):</label>
-        <input type="number" id="triglyceride" name="triglyceride" required>
+        <label for="triglyceride">Triglycerides (10-500 mg/dL):</label>
+        <input type="number" id="triglyceride" name="triglyceride" required placeholder="Enter triglycerides (10-500 mg/dL)">
 
-        <label for="urine_protein">Urine Protein:</label>
-        <input type="number" id="urine_protein" name="urine_protein" required>
+        <label for="urine_protein">Urine Protein (0-1000 mg/dL):</label>
+        <input type="number" id="urine_protein" name="urine_protein" required placeholder="Enter urine protein (0-1000 mg/dL)">
 
-        <label for="serum_creatinine">Serum Creatinine:</label>
-        <input type="number" id="serum_creatinine" name="serum_creatinine" required>
+        <label for="serum_creatinine">Serum Creatinine (0.1-10 mg/dL):</label>
+        <input type="number" id="serum_creatinine" name="serum_creatinine" required placeholder="Enter serum creatinine (0.1-10 mg/dL)">
 
-        <label for="SGOT_AST">SGOT/AST(Serum glutamic-oxaloacetic transaminase(Aspartate transaminase):</label>
-        <input type="number" id="SGOT_AST" name="SGOT_AST" required>
+        <label for="SGOT_AST">SGOT/AST (Aspartate Transaminase) (10-200 U/L):</label>
+        <input type="number" id="SGOT_AST" name="SGOT_AST" required placeholder="Enter SGOT/AST (10-200 U/L)">
 
-        <label for="SGOT_ALT">SGOT/ALT(Serum Glutamic-oxaloacetic transaminase(Alanine Transaminase):</label>
-        <input type="number" id="SGOT_ALT" name="SGOT_ALT" required>
+        <label for="SGOT_ALT">SGOT/ALT (Alanine Transaminase) (10-200 U/L):</label>
+        <input type="number" id="SGOT_ALT" name="SGOT_ALT" required placeholder="Enter SGOT/ALT (10-200 U/L)">
 
-        <label for="gamma_GTP">Gamma GTP(y_glutamyl transpepetidase):</label>
-        <input type="number" id="gamma_GTP" name="gamma_GTP" required>
+        <label for="gamma_GTP">Gamma GTP (10-200 U/L):</label>
+        <input type="number" id="gamma_GTP" name="gamma_GTP" required placeholder="Enter Gamma GTP (10-200 U/L)">
 
-        <label for="SMK_stat_type_cd">SMK Stat Type Code:</label>
-        <input type="number" id="SMK_stat_type_cd" name="SMK_stat_type_cd" required>
+        <label for="SMK_stat_type_cd">Smoke code(1-3):</label>
+        <input type="number" id="SMK_stat_type_cd" name="SMK_stat_type_cd" required placeholder="1-Never;2-sometimes;3-regular">
 
         <button type="submit">Predict</button>
     </form>
 </div>
+
+
 
 
 <footer>
@@ -218,10 +273,6 @@
         <button>Download Pdf</button>
     </div>
 
-    <div class="button-box">
-        <a href="/eda">
-            <button>Documentation</button>
-</div>
 </div>
 
 
